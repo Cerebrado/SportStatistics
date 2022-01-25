@@ -1,4 +1,90 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Stats</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarText"
+      aria-controls="navbarText"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#">New Game</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Help</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Settings</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-3">
+      <div class="list-group btn-group">
+        <ng-template let-t ngFor [ngForOf]="game.Teams" let-i="index">
+          <ng-template let-p ngFor [ngForOf]="t.Players">
+            <a
+              class="btn p-4 mt-3"
+              [ngClass]="i == 0 ? 'btn-primary' : 'btn-success'"
+            >
+              {{ p.Nick }}
+
+              <span
+                *ngIf="game.ServiceIndex == p.ServiceOrder"
+                class="badge bg-white rounded-pill"
+                >.</span
+              >
+            </a>
+          </ng-template>
+        </ng-template>
+      </div>
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-2 list-group btn-group">
+      <ng-template let-s ngFor [ngForOf]="statsLoV" let-i="index">
+        <a
+          class="btn btn-primary p-4 mt-3"
+          style="background-color=#ffc720"
+          *ngIf="s.Value == 1"
+        >
+          {{ s.Short }}
+        </a>
+      </ng-template>
+    </div>
+
+    <div class="col-sm-2 list-group btn-group">
+      <ng-template let-s ngFor [ngForOf]="statsLoV" let-i="index">
+        <a
+          class="btn btn-warning p-4 mt-3"
+          style="background-color=#ffc720"
+          *ngIf="s.Value == 0"
+        >
+          {{ s.Short }}
+        </a>
+      </ng-template>
+    </div>
+
+    <div class="col-sm-2 list-group btn-group">
+      <ng-template let-s ngFor [ngForOf]="statsLoV" let-i="index">
+        <a
+          class="btn btn-danger p-4 mt-3"
+          style="background-color=#ffc720"
+          *ngIf="s.Value == -1"
+        >
+          {{ s.Short }}
+        </a>
+      </ng-template>
+    </div>
+  </div>
+</div>
