@@ -42,9 +42,8 @@ export class newGameComponent {
   }
 
   AddPlayer(i: number) {
-    alert(this._selectedPlayers[i].Nick);
     for (let j = 0; j < 4; j++) {
-      if (!this._selectedPlayers[j]){
+      if (this._selectedPlayers[j] === null) {
         this._selectedPlayers[j] = this._playersList[i];
         return;
       }
