@@ -9,12 +9,12 @@ export class Game {
   constructor() {
     this.Teams = [new Team(), new Team()];
     this.Teams[0].Players = [
-      new Player('Edu', 'Eduardo', 'green', 0),
-      new Player('Diego', 'Diego P', 'green', 1),
+      new Player('Edu', 'Eduardo'),
+      new Player('Diego', 'Diego P'),
     ];
     this.Teams[1].Players = [
-      new Player('Javi', 'Javi N', 'blue', 2),
-      new Player('Juan', 'Juan N', 'blue', 3),
+      new Player('Javi', 'Javi N'),
+      new Player('Juan', 'Juan N' ),
     ];
     this.SetIndex = 0;
   }

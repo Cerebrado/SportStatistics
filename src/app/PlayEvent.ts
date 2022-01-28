@@ -1,4 +1,4 @@
-export class Stat {
+export class PlayEvent {
   public Short: string;
   public Long: string;
   public Value: number;
