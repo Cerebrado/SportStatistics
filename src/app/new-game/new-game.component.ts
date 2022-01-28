@@ -4,15 +4,21 @@ import { Player } from '../Player';
 
 @Component({
   selector: 'new-game',
-  templateUrl: './newGame.component.html',
+  templateUrl: './new-game.component.html',
 })
 export class newGameComponent {
   public SaveChanges: EventEmitter<Game> = new EventEmitter<Game>();
 
-  public playersList: Player[];
+  _playersList: Player[];
+  _selectedPlayers: Player[];
+  _game: Game;
+  // constructor(){
+  //   this._game=new Game();
+  // }
 
-  ngOnIinit() {
-    this.playersList = [
+  ngOnInit() {
+    //TODO: Get list from repository
+    this._playersList = [
       new Player('Edu', 'Eduardo'),
       new Player('Diego', 'Diego P'),
       new Player('Javi', 'Javi N'),
@@ -22,5 +28,17 @@ export class newGameComponent {
       new Player('LLL', 'Javi N'),
       new Player('XXX', 'Juan N'),
     ];
+
+    this._selectedPlayers = [null, null, null, null];
+  }
+
+  AddPlayer(i: number) {
+    for (let j = 0; j < 4; i++) {
+      if (!this._selectedPlayers[j])
+        this._selectedPlayers[j] = this._playersList[i];
+    }
+  }
+  RemovePlayer(i: number) {
+    this._selectedPlayers[i] = null;
   }
 }
