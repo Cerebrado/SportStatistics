@@ -1,4 +1,4 @@
-import { Component, EventEmitter, VERSION } from '@angular/core';
+import { Component, EventEmitter, Output, VERSION } from '@angular/core';
 import { Game } from '../Game';
 import { Player } from '../Player';
 
@@ -7,7 +7,9 @@ import { Player } from '../Player';
   templateUrl: './new-game.component.html',
 })
 export class newGameComponent {
-  public SaveChanges: EventEmitter<Game> = new EventEmitter<Game>();
+//  @Output() deleteRequest = new EventEmitter<Game>();
+
+  @Output() onNewGameCreated: EventEmitter<Game> = new EventEmitter<Game>();
 
   _playersList: Player[];
   _selectedPlayers: Player[];
@@ -43,6 +45,14 @@ export class newGameComponent {
 
   AddPlayer(i: number) {
     for (let j = 0; j < 4; j++) {
+      if (
+        this._selectedPlayers[j] !== null &&
+        this._selectedPlayers[j].Nick == this._playersList[i].Nick &&
+        this._selectedPlayers[j].Name == this._playersList[i].Name
+      ) {
+        alert(this._playersList[i].Nick + ' is already playing');
+        return;
+      }
       if (this._selectedPlayers[j] === null) {
         this._selectedPlayers[j] = this._playersList[i];
         return;
@@ -51,5 +61,14 @@ export class newGameComponent {
   }
   RemovePlayer(i: number) {
     this._selectedPlayers[i] = null;
+  }
+
+  ConfirmNewGame(){
+    var game: Game = new Game();
+    game.Teams[0].Players.push(new Player(this._selectedPlayers[0].Nick, this._selectedPlayers[0].Name))
+    game.Teams[0].Players.push(new Player(this._selectedPlayers[1].Nick, this._selectedPlayers[1].Name))
+    game.Teams[1].Players.push(new Player(this._selectedPlayers[2].Nick, this._selectedPlayers[2].Name))
+    game.Teams[1].Players.push(new Player(this._selectedPlayers[3].Nick, this._selectedPlayers[3].Name))
+    this.onNewGameCreated.emit(game);
   }
 }

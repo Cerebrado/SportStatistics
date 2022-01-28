@@ -11,12 +11,6 @@ import { PlayEvent } from './PlayEvent';
 export class AppComponent {
   public game: Game = new Game();
 
-  public playersLoV: Player[] = [
-    new Player('Edu', 'Eduardo'),
-    new Player('Diego', 'Diego P'),
-    new Player('Javi', 'Javi N'),
-    new Player('Juan', 'Juan N'),
-  ];
   public statsLoV: PlayEvent[] = [
     new PlayEvent('Ace', 'Ace', 1),
     new PlayEvent('Pass', 'Passing shot', 1),
@@ -36,4 +30,8 @@ export class AppComponent {
   public settings() {}
 
   public StatEntry: string = '';
+
+  public newGameCreated(game: Game) {
+    this.game = game;
+  }
 }
