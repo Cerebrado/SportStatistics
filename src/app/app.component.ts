@@ -9,7 +9,7 @@ import { PlayEvent } from './PlayEvent';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  @Input() game: Game = new Game();
+  game: Game = new Game();
 
   public statsLoV: PlayEvent[] = [
     new PlayEvent('Ace', 'Ace', 1),
@@ -23,7 +23,7 @@ export class AppComponent {
     new PlayEvent('Salv', 'Salvada', 0),
   ];
 
-  public newGame() {}
+  public startNewGame() {}
   public cancel() {}
   public statistics() {}
   public help() {}
@@ -32,6 +32,7 @@ export class AppComponent {
   public StatEntry: string = '';
 
   public newGameCreated(game: Game) {
+    alert('game ' + game.Name + ' received');
     this.game = game;
   }
 }

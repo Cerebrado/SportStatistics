@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, VERSION } from '@angular/core';
+import { Component, EventEmitter, Input, Output, VERSION } from '@angular/core';
 import { Game } from '../Game';
 import { Player } from '../Player';
 
@@ -7,13 +7,10 @@ import { Player } from '../Player';
   templateUrl: './new-game.component.html',
 })
 export class newGameComponent {
-  //  @Output() deleteRequest = new EventEmitter<Game>();
-
   @Output() onNewGameCreated: EventEmitter<Game> = new EventEmitter<Game>();
 
   _playersList: Player[];
   _selectedPlayers: Player[];
-  _game: Game;
   constructor() {
     this._playersList = [
       new Player('Edu', 'Eduardo'),
@@ -64,7 +61,8 @@ export class newGameComponent {
   }
 
   ConfirmNewGame() {
-    var game: Game = new Game();
+    var game = new Game();
+    alert('created ' + game.Name);
     game.Teams[0].Players.push(
       new Player(this._selectedPlayers[0].Nick, this._selectedPlayers[0].Name)
     );
