@@ -1,6 +1,5 @@
-import { Component, Input, VERSION } from '@angular/core';
+import { Component, Input, Output, VERSION } from '@angular/core';
 import { Game } from './Game';
-import { Player } from './Player';
 import { PlayEvent } from './PlayEvent';
 
 @Component({
@@ -31,8 +30,7 @@ export class AppComponent {
 
   public StatEntry: string = '';
 
-  public newGameCreated(game: Game) {
-    alert('game ' + game.Name + ' received');
-    this.game = game;
+  public newGameCreated($event) {
+    this.game = $event;
   }
 }
