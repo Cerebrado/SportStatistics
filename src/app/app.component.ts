@@ -1,4 +1,4 @@
-import { Component, VERSION } from '@angular/core';
+import { Component, Input, VERSION } from '@angular/core';
 import { Game } from './Game';
 import { Player } from './Player';
 import { PlayEvent } from './PlayEvent';
@@ -9,7 +9,7 @@ import { PlayEvent } from './PlayEvent';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  public game: Game = new Game();
+  @Input() game: Game = new Game();
 
   public statsLoV: PlayEvent[] = [
     new PlayEvent('Ace', 'Ace', 1),
