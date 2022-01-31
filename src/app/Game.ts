@@ -2,13 +2,25 @@ import { Player } from './Player';
 import { Team } from './Team';
 
 export class Game {
-  public Name: string;
+ 
   public Teams: Team[];
+  public Finalized: boolean
   public SetIndex: number;
   public ServiceIndex: number = 0;
+  public Name:string;
+
+  private _date: Date;
+  get Date(): Date {
+    return this._date;
+  }
+  set Date(value: Date) {
+    this._date = value;
+    this.Name = this.getDateAsString(value) ;
+  }
 
   constructor() {
-    this.Name = this.getDateAsString(new Date());
+    this.Date = new Date();
+
     this.Teams = [new Team(), new Team()];
     this.SetIndex = 0;
   }
@@ -18,12 +30,12 @@ export class Game {
   }
   getDateAsString(date: Date) {
     return (
-      date.getFullYear().toString() +
-      this.pad2(date.getMonth() + 1) +
-      this.pad2(date.getDate()) +
-      this.pad2(date.getHours()) +
-      this.pad2(date.getMinutes()) +
-      this.pad2(date.getSeconds())
+      date.getFullYear().toString() + '-' +
+      this.pad2(date.getMonth() + 1) + '-' +
+      this.pad2(date.getDate()) + ' ' +
+      this.pad2(date.getHours()) + ':' +
+      this.pad2(date.getMinutes()) + ':' +
+      this.pad2(date.getSeconds()) 
     );
   }
 }

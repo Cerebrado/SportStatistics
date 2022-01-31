@@ -62,7 +62,6 @@ export class newGameComponent {
 
   ConfirmNewGame() {
     var game = new Game();
-    alert('created ' + game.Name);
     game.Teams[0].Players.push(
       new Player(this._selectedPlayers[0].Nick, this._selectedPlayers[0].Name)
     );
