@@ -5,10 +5,14 @@
         <div class="card-body">
           <h5 class="card-title">Available Players</h5>
           <table class="table table-sm">
-            <tr *ngFor="let p of _playersList; index as i">
+            <tr
+              style="cursor: pointer"
+              *ngFor="let p of _playersList; index as i"
+              (click)="AddPlayer(i)"
+            >
               <td width="90%">{{ p.Nick }} - {{ p.Name }}</td>
               <td>
-                <a href="#" (click)="AddPlayer(i)">
+                <a href="#">
                   <span class="material-icons pull-right">arrow_forward</span>
                 </a>
               </td>
@@ -91,9 +95,13 @@
             </div>
           </div>
         </div>
-        <button class="btn btn-primary" (click)="ConfirmNewGame()">
-          Confirm
-        </button>
+        <div class="row mt-3">
+          <div class="col-12 offset-11">
+            <button class="btn btn-primary" (click)="ConfirmNewGame()">
+              Confirm
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
