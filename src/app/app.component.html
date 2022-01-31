@@ -34,5 +34,8 @@
     </button>
   </form>
 </nav>
-<new-game (onNewGameCreated)="newGameCreated($event)"></new-game>
-<game [game]="game"></game>
+<game *ngIf="menuOption == 0" [game]="game"></game>
+<new-game
+  *ngIf="menuOption == 1"
+  (onNewGameCreated)="newGameCreated($event)"
+></new-game>

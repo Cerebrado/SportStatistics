@@ -22,15 +22,27 @@ export class AppComponent {
     new PlayEvent('Salv', 'Salvada', 0),
   ];
 
-  public startNewGame() {}
-  public cancel() {}
-  public statistics() {}
-  public help() {}
-  public settings() {}
+  menuOption: number = 0;
+  public startNewGame() {
+    this.menuOption = 1;
+  }
+  public cancel() {
+    this.menuOption = 2;
+  }
+  public statistics() {
+    this.menuOption = 3;
+  }
+  public help() {
+    this.menuOption = 4;
+  }
+  public settings() {
+    this.menuOption = 5;
+  }
 
   public StatEntry: string = '';
 
   public newGameCreated($event) {
     this.game = $event;
+    this.menuOption = 0;
   }
 }
