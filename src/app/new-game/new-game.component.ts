@@ -6,7 +6,7 @@ import { Player } from '../Player';
   selector: 'new-game',
   templateUrl: './new-game.component.html',
 })
-export class newGameComponent {
+export class NewGameComponent {
   @Output() onNewGameCreated: EventEmitter<Game> = new EventEmitter<Game>();
 
   _playersList: Player[];
@@ -61,8 +61,7 @@ export class newGameComponent {
   }
 
   ConfirmNewGame() {
-    for(let i=0; i< 4; i++)
-    {
+    for (let i = 0; i < 4; i++) {
       if (this._selectedPlayers[i] === null) {
         alert('There must be 4 people to play. Get some friends');
         return;

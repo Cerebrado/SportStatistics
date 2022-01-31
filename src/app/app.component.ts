@@ -10,6 +10,7 @@ import { PlayEvent } from './PlayEvent';
 export class AppComponent {
   game: Game = new Game();
 
+
   public statsLoV: PlayEvent[] = [
     new PlayEvent('Ace', 'Ace', 1),
     new PlayEvent('Pass', 'Passing shot', 1),
