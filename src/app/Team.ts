@@ -1,8 +1,12 @@
-import { Player } from "./Player";
+import { Player } from './Player';
 
 export class Team {
   public Players: Player[];
   public SetScore: number[];
-  public GameScore: number;
-  public EqualAdvantage: string;
+  public GameCounting: number;
+  public GameScoreDisplay: string;
+  constructor() {
+    this.Players = new Array<Player>();
+    this.SetScore = new Array<number>();
+  }
 }

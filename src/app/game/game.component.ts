@@ -1,4 +1,4 @@
-import { Component, VERSION } from '@angular/core';
+import { Component, Input, VERSION } from '@angular/core';
 import { Game } from '../Game';
 import { Player } from '../Player';
 import { PlayEvent } from '../PlayEvent';
@@ -8,7 +8,7 @@ import { PlayEvent } from '../PlayEvent';
   templateUrl: './game.component.html',
 })
 export class gameComponent {
-  public game: Game = new Game();
+  @Input() game: Game;
 
   public playersLoV: Player[] = [
     new Player('Edu', 'Eduardo'),

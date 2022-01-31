@@ -7,7 +7,7 @@ import { Player } from '../Player';
   templateUrl: './new-game.component.html',
 })
 export class newGameComponent {
-//  @Output() deleteRequest = new EventEmitter<Game>();
+  //  @Output() deleteRequest = new EventEmitter<Game>();
 
   @Output() onNewGameCreated: EventEmitter<Game> = new EventEmitter<Game>();
 
@@ -63,12 +63,20 @@ export class newGameComponent {
     this._selectedPlayers[i] = null;
   }
 
-  ConfirmNewGame(){
+  ConfirmNewGame() {
     var game: Game = new Game();
-    game.Teams[0].Players.push(new Player(this._selectedPlayers[0].Nick, this._selectedPlayers[0].Name))
-    game.Teams[0].Players.push(new Player(this._selectedPlayers[1].Nick, this._selectedPlayers[1].Name))
-    game.Teams[1].Players.push(new Player(this._selectedPlayers[2].Nick, this._selectedPlayers[2].Name))
-    game.Teams[1].Players.push(new Player(this._selectedPlayers[3].Nick, this._selectedPlayers[3].Name))
+    game.Teams[0].Players.push(
+      new Player(this._selectedPlayers[0].Nick, this._selectedPlayers[0].Name)
+    );
+    game.Teams[0].Players.push(
+      new Player(this._selectedPlayers[1].Nick, this._selectedPlayers[1].Name)
+    );
+    game.Teams[1].Players.push(
+      new Player(this._selectedPlayers[2].Nick, this._selectedPlayers[2].Name)
+    );
+    game.Teams[1].Players.push(
+      new Player(this._selectedPlayers[3].Nick, this._selectedPlayers[3].Name)
+    );
     this.onNewGameCreated.emit(game);
   }
 }
