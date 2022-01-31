@@ -61,6 +61,14 @@ export class newGameComponent {
   }
 
   ConfirmNewGame() {
+    for(let i=0; i< 4; i++)
+    {
+      if (this._selectedPlayers[i] === null) {
+        alert('There must be 4 people to play. Get some friends');
+        return;
+      }
+    }
+
     var game = new Game();
     game.Teams[0].Players.push(
       new Player(this._selectedPlayers[0].Nick, this._selectedPlayers[0].Name)
