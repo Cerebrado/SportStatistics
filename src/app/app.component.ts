@@ -1,5 +1,6 @@
 import { Component, Input, Output, VERSION } from '@angular/core';
 import { Game } from './Game';
+import { PaddleStats } from './PaddleStats';
 import { PlayEvent } from './PlayEvent';
 
 @Component({
@@ -8,8 +9,22 @@ import { PlayEvent } from './PlayEvent';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  game: Game = new Game();
+  paddleStats: PaddleStats; 
+  game: Game;
 
+  ngOnInit(){
+    var storageData = localStorage.getItem("3TStats")
+
+    if(storageData === null)
+    {
+      this.paddleStats = new PaddleStats();
+      localStorage.add("3TStats", JSON.stringify(this.paddleStats));
+    }
+    else
+    {
+      this.paddleStats = JSON.parse(storageData);
+    }
+  }
 
   public statsLoV: PlayEvent[] = [
     new PlayEvent('Ace', 'Ace', 1),
