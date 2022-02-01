@@ -6,5 +6,5 @@ export class PaddleStats {
   history: Game[] = new Array<Game>();
   currentGame: Game = new Game();
   playersList: Player[] = new Array<Player>();
-  statsLoV: PlayEvent[] = new Array<PlayEvent>();
+  playEventsList: PlayEvent[] = new Array<PlayEvent>();
 }

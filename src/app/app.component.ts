@@ -16,25 +16,13 @@ export class AppComponent {
     var storageData = localStorage.getItem('3TStats');
     if (storageData === null) {
       this.paddleStats = new PaddleStats();
-      localStorage.add('3TStats', JSON.stringify(this.paddleStats));
+      localStorage.setItem('3TStats', JSON.stringify(this.paddleStats));
     } else {
       this.paddleStats = JSON.parse(storageData);
     }
   }
 
-  public statsLoV: PlayEvent[] = [
-    new PlayEvent('Ace', 'Ace', 1),
-    new PlayEvent('Pass', 'Passing shot', 1),
-    new PlayEvent('Sma', 'Smash', 1),
-    new PlayEvent('Drop', 'Drop', 1),
-    new PlayEvent('DblF', 'Doble Falta', -1),
-    new PlayEvent('ENF', 'Error no forzado', -1),
-    new PlayEvent('EF', 'Error forzado', -1),
-    new PlayEvent('Vend', 'Vendida', 0),
-    new PlayEvent('Salv', 'Salvada', 0),
-  ];
-
-  menuOption: number = 0;
+  menuOption: number = 3;
 
   back() {
     this.menuOption = 0;
@@ -59,7 +47,8 @@ export class AppComponent {
   public StatEntry: string = '';
 
   public newGameCreated($event) {
-    this.game = $event;
+    this.paddleStats.history.push(this.paddleStats.currentGame);
+    this.paddleStats.currentGame = $event;
     this.menuOption = 0;
   }
 }

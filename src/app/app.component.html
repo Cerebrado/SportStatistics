@@ -89,21 +89,36 @@
 
       <div class="col-6">
         <div class="row">
-          <ng-template let-s ngFor [ngForOf]="statsLoV" let-i="index">
+          <ng-template
+            let-s
+            ngFor
+            [ngForOf]="paddleStats.playEventsList"
+            let-i="index"
+          >
             <button class="btn btn-primary p-4 mt-3 ml-2" *ngIf="s.Value == 1">
               {{ s.Short }}
             </button>
           </ng-template>
         </div>
         <div class="row">
-          <ng-template let-s ngFor [ngForOf]="statsLoV" let-i="index">
+          <ng-template
+            let-s
+            ngFor
+            [ngForOf]="paddleStats.playEventsList"
+            let-i="index"
+          >
             <button class="btn btn-warning p-4 mt-3 ml-2" *ngIf="s.Value == 0">
               {{ s.Short }}
             </button>
           </ng-template>
         </div>
         <div class="row">
-          <ng-template let-s ngFor [ngForOf]="statsLoV" let-i="index">
+          <ng-template
+            let-s
+            ngFor
+            [ngForOf]="paddleStats.playEventsList"
+            let-i="index"
+          >
             <button class="btn btn-danger p-4 mt-3 ml-2" *ngIf="s.Value == -1">
               {{ s.Short }}
             </button>
@@ -132,4 +147,4 @@
   *ngIf="menuOption == 1"
   (onNewGameCreated)="newGameCreated($event)"
 ></new-game>
-<statistics *ngIf="menuOption == 3" (onBack="Back()" )></statistics>
+<statistics *ngIf="menuOption == 3" (onBack)="back()" )></statistics>

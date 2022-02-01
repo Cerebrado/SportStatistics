@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Available Players</h5>
+          <table class="table table-sm">
+            <tr
+              style="cursor: pointer"
+              *ngFor="let p of paddleStats.playersList; index as i"
+              (click)="AddPlayer(i)"
+            >
+              <td width="90%">{{ p.Nick }} - {{ p.Name }}</td>
+              <td>
+                <a href="#">
+                  <span class="material-icons pull-right">close</span>
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
