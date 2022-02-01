@@ -9,19 +9,15 @@ import { PlayEvent } from './PlayEvent';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  paddleStats: PaddleStats; 
+  paddleStats: PaddleStats;
   game: Game;
 
-  ngOnInit(){
-    var storageData = localStorage.getItem("3TStats")
-
-    if(storageData === null)
-    {
+  ngOnInit() {
+    var storageData = localStorage.getItem('3TStats');
+    if (storageData === null) {
       this.paddleStats = new PaddleStats();
-      localStorage.add("3TStats", JSON.stringify(this.paddleStats));
-    }
-    else
-    {
+      localStorage.add('3TStats', JSON.stringify(this.paddleStats));
+    } else {
       this.paddleStats = JSON.parse(storageData);
     }
   }
@@ -39,6 +35,11 @@ export class AppComponent {
   ];
 
   menuOption: number = 0;
+
+  back() {
+    this.menuOption = 0;
+  }
+
   public startNewGame() {
     this.menuOption = 1;
   }

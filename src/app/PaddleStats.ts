@@ -1,9 +1,10 @@
 import { Game } from './Game';
+import { Player } from './Player';
+import { PlayEvent } from './PlayEvent';
 
 export class PaddleStats {
-  games: Game[];
-
-  constructor() {
-    this.games = [new Game()];
-  }
+  history: Game[] = new Array<Game>();
+  currentGame: Game = new Game();
+  playersList: Player[] = new Array<Player>();
+  statsLoV: PlayEvent[] = new Array<PlayEvent>();
 }

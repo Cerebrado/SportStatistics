@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, VERSION } from '@angular/core';
 import { Game } from '../Game';
 import { Player } from '../Player';
+import {PaddleStats } from '../PaddleStats';
 
 @Component({
   selector: 'new-game',
@@ -9,24 +10,16 @@ import { Player } from '../Player';
 export class NewGameComponent {
   @Output() onNewGameCreated: EventEmitter<Game> = new EventEmitter<Game>();
 
-  _playersList: Player[];
+  
   _selectedPlayers: Player[];
-  constructor() {
-    this._playersList = [
-      new Player('Edu', 'Eduardo'),
-      new Player('Diego', 'Diego P'),
-      new Player('Javi', 'Javi N'),
-      new Player('Juan', 'Juan N'),
-      new Player('KKK', 'Eduardo'),
-      new Player('CCC', 'Diego P'),
-      new Player('LLL', 'Javi N'),
-      new Player('XXX', 'Juan N'),
-    ];
-  }
+  paddleStats: PaddleStats;
 
   ngOnInit() {
+    this.paddleStats = JSON.parse( localStorage.getItem('3TStats'));
+    
+
     //TODO: Get list from repository
-    this._playersList = [
+    this.paddleStats.playersList = [
       new Player('Edu', 'Eduardo'),
       new Player('Diego', 'Diego P'),
       new Player('Javi', 'Javi N'),
@@ -37,21 +30,27 @@ export class NewGameComponent {
       new Player('XXX', 'Juan N'),
     ];
 
-    this._selectedPlayers = [null, null, null, null];
+
+    this._selectedPlayers = [
+      this.paddleStats.currentGame.Teams[0].Players[0],
+      this.paddleStats.currentGame.Teams[0].Players[1],
+      this.paddleStats.currentGame.Teams[1].Players[0],
+      this.paddleStats.currentGame.Teams[1].Players[1]
+    ];
   }
 
   AddPlayer(i: number) {
     for (let j = 0; j < 4; j++) {
       if (
         this._selectedPlayers[j] !== null &&
-        this._selectedPlayers[j].Nick == this._playersList[i].Nick &&
-        this._selectedPlayers[j].Name == this._playersList[i].Name
+        this._selectedPlayers[j].Nick == this.paddleStats.playersList[i].Nick &&
+        this._selectedPlayers[j].Name == this.paddleStats.playersList[i].Name
       ) {
-        alert(this._playersList[i].Nick + ' is already playing');
+        alert(this.paddleStats.playersList[i].Nick + ' is already playing');
         return;
       }
       if (this._selectedPlayers[j] === null) {
-        this._selectedPlayers[j] = this._playersList[i];
+        this._selectedPlayers[j] = this.paddleStats.playersList[i];
         return;
       }
     }

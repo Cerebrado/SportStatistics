@@ -23,7 +23,11 @@
       >
         <span class="material-icons">leaderboard</span>
       </button>
-      <button class="btn btn-outline-success ml-3" type="button" (click)="help()">
+      <button
+        class="btn btn-outline-success ml-3"
+        type="button"
+        (click)="help()"
+      >
         <span class="material-icons">help</span>
       </button>
       <button
@@ -36,96 +40,96 @@
     </form>
   </nav>
   <div class="container-fluid">
-  <div class="row">
-    <div class="col-3">
-      <table class="table">
-        <tr>
-          <td colspan="3">
-            {{ game.Name }}
-          </td>
-        </tr>
-        <tr>
-          <td><h1>0</h1></td>
-          <td><h1>0</h1></td>
-          <td><h1>0</h1></td>
-        </tr>
-        <tr>
-          <td><h1>0</h1></td>
-          <td><h1>0</h1></td>
-          <td><h1>0</h1></td>
-        </tr>
-      </table>
+    <div class="row">
+      <div class="col-3">
+        <table class="table">
+          <tr>
+            <td colspan="3">
+              {{ game.Name }}
+            </td>
+          </tr>
+          <tr>
+            <td><h1>0</h1></td>
+            <td><h1>0</h1></td>
+            <td><h1>0</h1></td>
+          </tr>
+          <tr>
+            <td><h1>0</h1></td>
+            <td><h1>0</h1></td>
+            <td><h1>0</h1></td>
+          </tr>
+        </table>
 
-      <table class="table table-dark">
-        <tr>
-          <td class="text-center"><h1>0 - 0</h1></td>
-        </tr>
-      </table>
-    </div>
-    <div class="col-3">
-      <div class="list-group btn-group">
-        <ng-template let-t ngFor [ngForOf]="game.Teams" let-i="index">
-          <ng-template let-p ngFor [ngForOf]="t.Players">
-            <button
-              class="btn p-4 mt-3"
-              [ngClass]="i == 0 ? 'btn-info' : 'btn-success'"
-            >
-              {{ p.Nick }} &nbsp;
-
-              <span
-                *ngIf="game.ServiceIndex == p.ServiceOrder"
-                class="badge bg-white badge-pill"
-                >.</span
+        <table class="table table-dark">
+          <tr>
+            <td class="text-center"><h1>0 - 0</h1></td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-3">
+        <div class="list-group btn-group">
+          <ng-template let-t ngFor [ngForOf]="game.Teams" let-i="index">
+            <ng-template let-p ngFor [ngForOf]="t.Players">
+              <button
+                class="btn p-4 mt-3"
+                [ngClass]="i == 0 ? 'btn-info' : 'btn-success'"
               >
+                {{ p.Nick }} &nbsp;
+
+                <span
+                  *ngIf="game.ServiceIndex == p.ServiceOrder"
+                  class="badge bg-white badge-pill"
+                  >.</span
+                >
+              </button>
+            </ng-template>
+          </ng-template>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="row">
+          <ng-template let-s ngFor [ngForOf]="statsLoV" let-i="index">
+            <button class="btn btn-primary p-4 mt-3 ml-2" *ngIf="s.Value == 1">
+              {{ s.Short }}
             </button>
           </ng-template>
-        </ng-template>
+        </div>
+        <div class="row">
+          <ng-template let-s ngFor [ngForOf]="statsLoV" let-i="index">
+            <button class="btn btn-warning p-4 mt-3 ml-2" *ngIf="s.Value == 0">
+              {{ s.Short }}
+            </button>
+          </ng-template>
+        </div>
+        <div class="row">
+          <ng-template let-s ngFor [ngForOf]="statsLoV" let-i="index">
+            <button class="btn btn-danger p-4 mt-3 ml-2" *ngIf="s.Value == -1">
+              {{ s.Short }}
+            </button>
+          </ng-template>
+        </div>
       </div>
     </div>
-
-    <div class="col-6">
-      <div class="row">
-        <ng-template let-s ngFor [ngForOf]="statsLoV" let-i="index">
-          <button class="btn btn-primary p-4 mt-3 ml-2" *ngIf="s.Value == 1">
-            {{ s.Short }}
-          </button>
-        </ng-template>
+    <div class="row mt-4 align-items-center">
+      <div class="col-1">
+        <button class="btn btn-secondary" type="button">
+          <span class="material-icons">undo</span>
+        </button>
       </div>
-      <div class="row">
-        <ng-template let-s ngFor [ngForOf]="statsLoV" let-i="index">
-          <button class="btn btn-warning p-4 mt-3 ml-2" *ngIf="s.Value == 0">
-            {{ s.Short }}
-          </button>
-        </ng-template>
+      <div class="col-9">
+        <div class="border border-primary">{{ StatEntry }}</div>
       </div>
-      <div class="row">
-        <ng-template let-s ngFor [ngForOf]="statsLoV" let-i="index">
-          <button class="btn btn-danger p-4 mt-3 ml-2" *ngIf="s.Value == -1">
-            {{ s.Short }}
-          </button>
-        </ng-template>
+      <div class="col-2">
+        <button class="btn btn-dark btn-block" type="button">
+          <span class="material-icons">check</span>
+        </button>
       </div>
     </div>
-  </div>
-  <div class="row mt-4 align-items-center">
-    <div class="col-1">
-      <button class="btn btn-secondary" type="button">
-        <span class="material-icons">undo</span>
-      </button>
-    </div>
-    <div class="col-9">
-      <div class="border border-primary">{{ StatEntry }}</div>
-    </div>
-    <div class="col-2">
-      <button class="btn btn-dark btn-block" type="button">
-        <span class="material-icons">check</span>
-      </button>
-    </div>
-  </div>
   </div>
 </div>
 <new-game
   *ngIf="menuOption == 1"
   (onNewGameCreated)="newGameCreated($event)"
 ></new-game>
-<statistics *ngIf="menuOption == 3"></statistics>
+<statistics *ngIf="menuOption == 3" (onBack="Back()" )></statistics>
