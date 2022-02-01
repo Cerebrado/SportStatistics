@@ -45,7 +45,7 @@
         <table class="table">
           <tr>
             <td colspan="3">
-              {{ game.Name }}
+              {{ paddleStats.currentGame.Name }}
             </td>
           </tr>
           <tr>
@@ -68,7 +68,7 @@
       </div>
       <div class="col-3">
         <div class="list-group btn-group">
-          <ng-template let-t ngFor [ngForOf]="game.Teams" let-i="index">
+          <ng-template let-t ngFor [ngForOf]="paddleStats.currentGame.Teams" let-i="index">
             <ng-template let-p ngFor [ngForOf]="t.Players">
               <button
                 class="btn p-4 mt-3"
@@ -77,7 +77,7 @@
                 {{ p.Nick }} &nbsp;
 
                 <span
-                  *ngIf="game.ServiceIndex == p.ServiceOrder"
+                  *ngIf="paddleStats.currentGame.ServiceIndex == p.ServiceOrder"
                   class="badge bg-white badge-pill"
                   >.</span
                 >
@@ -147,4 +147,5 @@
   *ngIf="menuOption == 1"
   (onNewGameCreated)="newGameCreated($event)"
 ></new-game>
-<statistics *ngIf="menuOption == 3" (onBack)="back()" )></statistics>
+<statistics *ngIf="menuOption == 3" (onBack)="back()"></statistics>
+<settings *ngIf="menuOption == 5" (onBack)="back()"></settings>

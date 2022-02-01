@@ -6,10 +6,16 @@ import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { NewGameComponent } from './new-game/new-game.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, CommonModule],
-  declarations: [AppComponent, NewGameComponent, StatisticsComponent],
+  declarations: [
+    AppComponent,
+    NewGameComponent,
+    StatisticsComponent,
+    SettingsComponent,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

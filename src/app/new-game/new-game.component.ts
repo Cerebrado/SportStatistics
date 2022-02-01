@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output, VERSION } from '@angular/core';
 import { Game } from '../Game';
 import { Player } from '../Player';
-import {PaddleStats } from '../PaddleStats';
+import { PaddleStats } from '../PaddleStats';
 
 @Component({
   selector: 'new-game',
@@ -10,32 +10,17 @@ import {PaddleStats } from '../PaddleStats';
 export class NewGameComponent {
   @Output() onNewGameCreated: EventEmitter<Game> = new EventEmitter<Game>();
 
-  
   _selectedPlayers: Player[];
   paddleStats: PaddleStats;
 
   ngOnInit() {
-    this.paddleStats = JSON.parse( localStorage.getItem('3TStats'));
-    
-
-    //TODO: Get list from repository
-    this.paddleStats.playersList = [
-      new Player('Edu', 'Eduardo'),
-      new Player('Diego', 'Diego P'),
-      new Player('Javi', 'Javi N'),
-      new Player('Juan', 'Juan N'),
-      new Player('KKK', 'Eduardo'),
-      new Player('CCC', 'Diego P'),
-      new Player('LLL', 'Javi N'),
-      new Player('XXX', 'Juan N'),
-    ];
-
+    this.paddleStats = JSON.parse(localStorage.getItem('3TStats'));
 
     this._selectedPlayers = [
       this.paddleStats.currentGame.Teams[0].Players[0],
       this.paddleStats.currentGame.Teams[0].Players[1],
       this.paddleStats.currentGame.Teams[1].Players[0],
-      this.paddleStats.currentGame.Teams[1].Players[1]
+      this.paddleStats.currentGame.Teams[1].Players[1],
     ];
   }
 

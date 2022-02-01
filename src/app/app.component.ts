@@ -1,7 +1,5 @@
 import { Component, Input, Output, VERSION } from '@angular/core';
-import { Game } from './Game';
 import { PaddleStats } from './PaddleStats';
-import { PlayEvent } from './PlayEvent';
 
 @Component({
   selector: 'my-app',
@@ -10,7 +8,6 @@ import { PlayEvent } from './PlayEvent';
 })
 export class AppComponent {
   paddleStats: PaddleStats;
-  game: Game;
 
   ngOnInit() {
     var storageData = localStorage.getItem('3TStats');
@@ -22,7 +19,7 @@ export class AppComponent {
     }
   }
 
-  menuOption: number = 3;
+  menuOption: number = 5;
 
   back() {
     this.menuOption = 0;
