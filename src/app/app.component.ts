@@ -19,7 +19,7 @@ export class AppComponent {
     }
   }
 
-  menuOption: number = 5;
+  menuOption: number = 0;
 
   back() {
     this.menuOption = 0;
