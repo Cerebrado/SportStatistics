@@ -154,7 +154,7 @@
   (onNewGameCreated)="newGameCreated($event)"
   (onbtnCancelClick)="btnCancelClick($event)"
 ></new-match>
-<statistics *ngIf="menuOption == 3" (onBack)="back()"></statistics>
+<statistics *ngIf="menuOption == 3"></statistics>
 <settings
   *ngIf="menuOption == 5"
   [Settings]="Model.Settings"

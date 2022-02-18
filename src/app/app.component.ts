@@ -15,10 +15,6 @@ export class AppComponent {
 
   menuOption: number = 1;
 
-  back() {
-    this.menuOption = 0;
-  }
-
   public startNewGame() {
     this.menuOption = 1;
   }
