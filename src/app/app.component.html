@@ -45,7 +45,7 @@
         <table class="table">
           <tr>
             <td colspan="3">
-              {{ paddleStats.currentGame.Name }}
+              {{ Model.CurrentGame.Name }}
             </td>
           </tr>
           <tr>
@@ -71,7 +71,7 @@
           <ng-template
             let-t
             ngFor
-            [ngForOf]="paddleStats.currentGame.Teams"
+            [ngForOf]="Model.CurrentGame.Teams"
             let-i="index"
           >
             <ng-template let-p ngFor [ngForOf]="t.Players">
@@ -82,7 +82,7 @@
                 {{ p.Nick }} &nbsp;
 
                 <span
-                  *ngIf="paddleStats.currentGame.ServiceIndex == p.ServiceOrder"
+                  *ngIf="Model.CurrentGame.ServiceIndex == p.ServiceOrder"
                   class="badge bg-white badge-pill"
                   >.</span
                 >
@@ -97,7 +97,7 @@
           <ng-template
             let-s
             ngFor
-            [ngForOf]="paddleStats.playEventsList"
+            [ngForOf]="Model.Settings.PlayEventsList"
             let-i="index"
           >
             <button class="btn btn-primary p-4 mt-3 ml-2" *ngIf="s.Value == 1">
@@ -109,7 +109,7 @@
           <ng-template
             let-s
             ngFor
-            [ngForOf]="paddleStats.playEventsList"
+            [ngForOf]="Model.Settings.PlayEventsList"
             let-i="index"
           >
             <button class="btn btn-warning p-4 mt-3 ml-2" *ngIf="s.Value == 0">
@@ -121,7 +121,7 @@
           <ng-template
             let-s
             ngFor
-            [ngForOf]="paddleStats.playEventsList"
+            [ngForOf]="Model.Settings.PlayEventsList"
             let-i="index"
           >
             <button class="btn btn-danger p-4 mt-3 ml-2" *ngIf="s.Value == -1">

@@ -1,5 +1,5 @@
 import { Component, Input, Output, VERSION } from '@angular/core';
-import { PaddleStats } from './PaddleStats';
+import { Model } from './Model';
 
 @Component({
   selector: 'my-app',
@@ -7,15 +7,15 @@ import { PaddleStats } from './PaddleStats';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  paddleStats: PaddleStats;
+  Model: Model;
 
   ngOnInit() {
     var storageData = localStorage.getItem('3TStats');
     if (storageData === null) {
-      this.paddleStats = new PaddleStats();
-      localStorage.setItem('3TStats', JSON.stringify(this.paddleStats));
+      this.Model = new Model();
+      localStorage.setItem('3TStats', JSON.stringify(this.Model));
     } else {
-      this.paddleStats = JSON.parse(storageData);
+      this.Model = JSON.parse(storageData);
     }
   }
 
@@ -44,8 +44,8 @@ export class AppComponent {
   public StatEntry: string = '';
 
   public newGameCreated($event) {
-    this.paddleStats.history.push(this.paddleStats.currentGame);
-    this.paddleStats.currentGame = $event;
+    this.Model.History.push(this.Model.CurrentGame);
+    this.Model.CurrentGame = $event;
     this.menuOption = 0;
   }
 

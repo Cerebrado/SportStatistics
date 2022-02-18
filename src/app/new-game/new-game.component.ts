@@ -66,6 +66,7 @@ export class NewGameComponent {
     game.Teams[1].Players.push(
       new Player(this._selectedPlayers[3].Nick, this._selectedPlayers[3].Name)
     );
+
     this.onNewGameCreated.emit(game);
   }
 
