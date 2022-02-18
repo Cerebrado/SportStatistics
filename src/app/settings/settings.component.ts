@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { PaddleStats } from '../PaddleStats';
 import { Player } from '../Player';
 
@@ -23,5 +23,10 @@ export class SettingsComponent implements OnInit {
       new Player('LLL', 'Javi N'),
       new Player('XXX', 'Juan N'),
     ];
+  }
+  @Output() onbtnCancelClick: EventEmitter<null> = new EventEmitter<null>();
+
+  btnCancelClick() {
+    this.onbtnCancelClick.emit(null);
   }
 }

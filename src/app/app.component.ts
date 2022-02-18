@@ -48,4 +48,10 @@ export class AppComponent {
     this.paddleStats.currentGame = $event;
     this.menuOption = 0;
   }
+
+  public btnCancelClick($event){
+    this.menuOption = 0;
+  }
+
+
 }

@@ -9,6 +9,7 @@ import { PaddleStats } from '../PaddleStats';
 })
 export class NewGameComponent {
   @Output() onNewGameCreated: EventEmitter<Game> = new EventEmitter<Game>();
+  @Output() onbtnCancelClick: EventEmitter<Game> = new EventEmitter<Game>();
 
   _selectedPlayers: Player[];
   paddleStats: PaddleStats;
@@ -66,5 +67,9 @@ export class NewGameComponent {
       new Player(this._selectedPlayers[3].Nick, this._selectedPlayers[3].Name)
     );
     this.onNewGameCreated.emit(game);
+  }
+
+  btnCancelClick() {
+    this.onbtnCancelClick.emit(null);
   }
 }
