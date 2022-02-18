@@ -1,6 +1,6 @@
 export class Model {
-  History: Game[] = new Array<Game>();
-  CurrentGame: Game;
+  History: Match[] = new Array<Match>();
+  CurrentGame: Match;
   Settings: Settings = new Settings();
 }
 
@@ -27,12 +27,12 @@ export class Player {
   public ServiceOrder: number;
   public Stats: PlayEvent[];
 
-  constructor(nick: string, name: string) {
-    this.Nick = nick;
-    this.Name = name;
-    this.ServiceOrder = -1;
-    this.Stats = new Array<PlayEvent>();
-  }
+  // constructor(nick: string, name: string) {
+  //   this.Nick = nick;
+  //   this.Name = name;
+  //   this.ServiceOrder = -1;
+  //   this.Stats = new Array<PlayEvent>();
+  // }
 }
 
 export class Team {
@@ -46,7 +46,7 @@ export class Team {
   }
 }
 
-export class Game {
+export class Match {
   public Teams: Team[];
   public Finalized: boolean;
   public SetIndex: number;

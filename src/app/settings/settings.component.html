@@ -5,11 +5,11 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Players</h5>
-          
+
           <table class="table table-sm">
             <tr
               style="cursor: pointer"
-              *ngFor="let p of paddleStats.playersList; index as i"
+              *ngFor="let p of Model.Settings.PlayersList; index as i"
             >
               <td width="90%">{{ p.Nick }} - {{ p.Name }}</td>
               <td>
@@ -29,7 +29,7 @@
           <table class="table table-sm">
             <tr
               style="cursor: pointer"
-              *ngFor="let p of paddleStats.playEventsList; index as i"
+              *ngFor="let p of Model.Settings.PlayEventsList; index as i"
             >
               <td width="90%">{{ p.Short }} - {{ p.Long }}</td>
               <td>
@@ -50,7 +50,9 @@
       </button>
     </div>
     <div class="col-6">
-      <button class="btn btn-primary">Guardar</button>
+      <button class="btn btn-primary" (click)="btnConfirmClick()">
+        Guardar
+      </button>
     </div>
   </div>
 </div>

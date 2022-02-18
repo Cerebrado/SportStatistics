@@ -10,13 +10,7 @@ export class AppComponent {
   Model: Model;
 
   ngOnInit() {
-    var storageData = localStorage.getItem('3TStats');
-    if (storageData === null) {
-      this.Model = new Model();
-      localStorage.setItem('3TStats', JSON.stringify(this.Model));
-    } else {
-      this.Model = JSON.parse(storageData);
-    }
+    this.Model = this.LoadModel();
   }
 
   menuOption: number = 0;
@@ -43,15 +37,36 @@ export class AppComponent {
 
   public StatEntry: string = '';
 
+  SaveModel() {
+    localStorage.setItem('3TStats', JSON.stringify(this.Model));
+  }
+
+  LoadModel(): Model {
+    let model: Model;
+    var storageData = localStorage.getItem('3TStats');
+    if (storageData === null) {
+      model = new Model();
+      this.SaveModel();
+    } else {
+      model = JSON.parse(storageData);
+    }
+    return model;
+  }
+
+  public btnSettingsConfirmClick($event) {
+    this.Model.Settings = $event;
+    this.SaveModel();
+    this.menuOption = 0;
+  }
+
   public newGameCreated($event) {
     this.Model.History.push(this.Model.CurrentGame);
     this.Model.CurrentGame = $event;
+    this.SaveModel();
     this.menuOption = 0;
   }
 
-  public btnCancelClick($event){
+  public btnCancelClick($event) {
     this.menuOption = 0;
   }
-
-
 }

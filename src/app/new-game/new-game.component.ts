@@ -1,27 +1,26 @@
 import { Component, EventEmitter, Input, Output, VERSION } from '@angular/core';
-import { Game } from '../Game';
-import { Player } from '../Player';
-import { PaddleStats } from '../PaddleStats';
+import { Match, Player, Settings } from '../Model';
 
 @Component({
   selector: 'new-game',
   templateUrl: './new-game.component.html',
 })
-export class NewGameComponent {
-  @Output() onNewGameCreated: EventEmitter<Game> = new EventEmitter<Game>();
-  @Output() onbtnCancelClick: EventEmitter<Game> = new EventEmitter<Game>();
+export class NewMatchComponent {
+  Match:Match;
+  @Input() Settings: Settings;
+  @Output() onNewMatchCreated: EventEmitter<Match> = new EventEmitter<Match>();
+  @Output() onbtnCancelClick: EventEmitter<Match> = new EventEmitter<Match>();
 
   _selectedPlayers: Player[];
-  paddleStats: PaddleStats;
 
   ngOnInit() {
-    this.paddleStats = JSON.parse(localStorage.getItem('3TStats'));
 
     this._selectedPlayers = [
-      this.paddleStats.currentGame.Teams[0].Players[0],
-      this.paddleStats.currentGame.Teams[0].Players[1],
-      this.paddleStats.currentGame.Teams[1].Players[0],
-      this.paddleStats.currentGame.Teams[1].Players[1],
+      this.Match = new Match();
+      this.Match.Teams[0].Players[0],
+      this.Match.Teams[0].Players[1],
+      this.Match.Teams[1].Players[0],
+      this.Match.Teams[1].Players[1],
     ];
   }
 
@@ -29,14 +28,14 @@ export class NewGameComponent {
     for (let j = 0; j < 4; j++) {
       if (
         this._selectedPlayers[j] !== null &&
-        this._selectedPlayers[j].Nick == this.paddleStats.playersList[i].Nick &&
-        this._selectedPlayers[j].Name == this.paddleStats.playersList[i].Name
+        this._selectedPlayers[j].Nick == this.Settings.PlayersList[i].Nick &&
+        this._selectedPlayers[j].Name == this.Settings.PlayersList[i].Name
       ) {
-        alert(this.paddleStats.playersList[i].Nick + ' is already playing');
+        alert(this.Settings.PlayersList[i].Nick + ' is already playing');
         return;
       }
       if (this._selectedPlayers[j] === null) {
-        this._selectedPlayers[j] = this.paddleStats.playersList[i];
+        this._selectedPlayers[j] = this.Settings.PlayersList[i];
         return;
       }
     }
@@ -45,7 +44,7 @@ export class NewGameComponent {
     this._selectedPlayers[i] = null;
   }
 
-  ConfirmNewGame() {
+  ConfirmNewMatch() {
     for (let i = 0; i < 4; i++) {
       if (this._selectedPlayers[i] === null) {
         alert('There must be 4 people to play. Get some friends');
@@ -53,7 +52,7 @@ export class NewGameComponent {
       }
     }
 
-    var game = new Game();
+    var game = new Match();
     game.Teams[0].Players.push(
       new Player(this._selectedPlayers[0].Nick, this._selectedPlayers[0].Name)
     );
@@ -67,7 +66,7 @@ export class NewGameComponent {
       new Player(this._selectedPlayers[3].Nick, this._selectedPlayers[3].Name)
     );
 
-    this.onNewGameCreated.emit(game);
+    this.onNewMatchCreated.emit(game);
   }
 
   btnCancelClick() {

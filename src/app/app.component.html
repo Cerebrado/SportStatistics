@@ -150,11 +150,14 @@
 </div>
 <new-game
   *ngIf="menuOption == 1"
+  [Game] = "Model.Current"
   (onNewGameCreated)="newGameCreated($event)"
   (onbtnCancelClick)="btnCancelClick($event)"
 ></new-game>
 <statistics *ngIf="menuOption == 3" (onBack)="back()"></statistics>
 <settings
   *ngIf="menuOption == 5"
-  (onbtnCancelClick)="btnCancelClick($event)"
+  [Settings]="Model.Settings"
+  (onBtnCancelClick)="btnCancelClick($event)"
+  (onBtnConfirmClick)="btnSettingsconfirmClick($event)"
 ></settings>
