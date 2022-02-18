@@ -9,7 +9,7 @@
           <table class="table table-sm">
             <tr
               style="cursor: pointer"
-              *ngFor="let p of Model.Settings.PlayersList; index as i"
+              *ngFor="let p of Settings.PlayersList; index as i"
             >
               <td width="90%">{{ p.Nick }} - {{ p.Name }}</td>
               <td>
@@ -29,7 +29,7 @@
           <table class="table table-sm">
             <tr
               style="cursor: pointer"
-              *ngFor="let p of Model.Settings.PlayEventsList; index as i"
+              *ngFor="let p of Settings.PlayEventsList; index as i"
             >
               <td width="90%">{{ p.Short }} - {{ p.Long }}</td>
               <td>
