@@ -13,7 +13,7 @@ export class AppComponent {
     this.Model = this.LoadModel();
   }
 
-  menuOption: number = 0;
+  menuOption: number = 1;
 
   back() {
     this.menuOption = 0;
