@@ -4,11 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { Model } from './Model';
+import { NewMatchComponent } from './new-match/new-match.component';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, CommonModule],
-  declarations: [AppComponent, Model],
+  declarations: [
+    AppComponent,
+    NewMatchComponent,
+    StatisticsComponent,
+    SettingsComponent,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

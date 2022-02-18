@@ -2,11 +2,11 @@ import { Component, EventEmitter, Input, Output, VERSION } from '@angular/core';
 import { Match, Player, Settings } from '../Model';
 
 @Component({
-  selector: 'new-game',
-  templateUrl: './new-game.component.html',
+  selector: 'new-match',
+  templateUrl: './new-match.component.html',
 })
 export class NewMatchComponent {
-  Match:Match;
+  Match: Match;
   @Input() Settings: Settings;
   @Output() onNewMatchCreated: EventEmitter<Match> = new EventEmitter<Match>();
   @Output() onbtnCancelClick: EventEmitter<Match> = new EventEmitter<Match>();
@@ -14,9 +14,9 @@ export class NewMatchComponent {
   _selectedPlayers: Player[];
 
   ngOnInit() {
+    this.Match = new Match();
 
     this._selectedPlayers = [
-      this.Match = new Match();
       this.Match.Teams[0].Players[0],
       this.Match.Teams[0].Players[1],
       this.Match.Teams[1].Players[0],

@@ -148,12 +148,12 @@
     </div>
   </div>
 </div>
-<new-game
+<new-match
   *ngIf="menuOption == 1"
-  [Game] = "Model.Current"
+  [Settings]="Model.Settings"
   (onNewGameCreated)="newGameCreated($event)"
   (onbtnCancelClick)="btnCancelClick($event)"
-></new-game>
+></new-match>
 <statistics *ngIf="menuOption == 3" (onBack)="back()"></statistics>
 <settings
   *ngIf="menuOption == 5"
