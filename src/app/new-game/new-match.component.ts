@@ -52,21 +52,21 @@ export class NewMatchComponent {
       }
     }
 
-    var game = new Match();
-    game.Teams[0].Players.push(
+    var match = new Match();
+    match.Teams[0].Players.push(
       new Player(this._selectedPlayers[0].Nick, this._selectedPlayers[0].Name)
     );
-    game.Teams[0].Players.push(
+    match.Teams[0].Players.push(
       new Player(this._selectedPlayers[1].Nick, this._selectedPlayers[1].Name)
     );
-    game.Teams[1].Players.push(
+    match.Teams[1].Players.push(
       new Player(this._selectedPlayers[2].Nick, this._selectedPlayers[2].Name)
     );
-    game.Teams[1].Players.push(
+    match.Teams[1].Players.push(
       new Player(this._selectedPlayers[3].Nick, this._selectedPlayers[3].Name)
     );
 
-    this.onNewMatchCreated.emit(game);
+    this.onNewMatchCreated.emit(match);
   }
 
   btnCancelClick() {
