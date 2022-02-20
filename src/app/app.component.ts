@@ -13,7 +13,7 @@ export class AppComponent {
     this.Model = this.LoadModel();
   }
 
-  menuOption: number = 1;
+  menuOption: number = 5;
 
   public startNewGame() {
     this.menuOption = 1;

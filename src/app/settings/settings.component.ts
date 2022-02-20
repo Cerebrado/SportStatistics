@@ -26,7 +26,8 @@ export class SettingsComponent implements OnInit {
     // //   new Player('XXX', 'Juan N'),
     // // ];
   }
-
+  btnAddPlayerClick() {}
+  btnAddEventClick (){}
   btnCancelClick() {
     this.onBtnCancelClick.emit(null);
   }

@@ -4,8 +4,16 @@
     <div class="col-6">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Players</h5>
-
+          <h5 class="card-title float-left"> 
+            <span>Players</span>
+          </h5>
+          <button
+          class="btn btn-outline-primary ml-2 btn-sm"
+          type="button"
+          (click)="btnAddPlayerClick()"
+        >
+          <span class="material-icons">add</span>
+        </button>
           <table class="table table-sm">
             <tr
               style="cursor: pointer"
@@ -25,7 +33,16 @@
     <div class="col-6">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Events</h5>
+          <h5 class="card-title float-left">
+            <span>Events</span>
+          </h5>
+          <button
+          class="btn btn-outline-primary ml-2 btn-sm"
+          type="button"
+          (click)="btnAddEventClick()"
+        >
+          <span class="material-icons">add</span>
+        </button>
           <table class="table table-sm">
             <tr
               style="cursor: pointer"
