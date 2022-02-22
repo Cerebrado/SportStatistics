@@ -1,12 +1,13 @@
 export class Model {
   History: Match[] = new Array<Match>();
-  CurrentGame: Match;
+  CurrentMatch: Match = new Match();
   Settings: Settings = new Settings();
-  User: User;
+  User: User = new User();
 }
 
-export class User{
+export class User {
   email: string;
+  isLoggedIn: boolean;
 }
 
 export class Settings {
@@ -18,7 +19,6 @@ export class PlayEvent {
   public Short: string;
   public Long: string;
   public Value: number;
-
 
   constructor(short: string, long: string, value: number) {
     this.Short = short;

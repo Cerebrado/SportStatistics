@@ -50,8 +50,8 @@ export class AppComponent {
   }
 
   public newGameCreated($event) {
-    this.Model.History.push(this.Model.CurrentGame);
-    this.Model.CurrentGame = $event;
+    this.Model.History.push(this.Model.CurrentMatch);
+    this.Model.CurrentMatch = $event;
     this.SaveModel();
     this.menuOption = 0;
   }
