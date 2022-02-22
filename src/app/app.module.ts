@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { NewMatchComponent } from './new-match/new-match.component';
+import { MatchComponent } from './match/match.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { SettingsComponent } from './settings/settings.component';
 
@@ -13,6 +14,7 @@ import { SettingsComponent } from './settings/settings.component';
   declarations: [
     AppComponent,
     NewMatchComponent,
+    MatchComponent,
     StatisticsComponent,
     SettingsComponent,
   ],

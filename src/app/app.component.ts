@@ -13,22 +13,16 @@ export class AppComponent {
     this.Model = this.LoadModel();
   }
 
-  menuOption: number = 5;
+  menuOption: number = 0;
 
   public startNewGame() {
     this.menuOption = 1;
   }
-  public cancel() {
+  public statistics() {
     this.menuOption = 2;
   }
-  public statistics() {
-    this.menuOption = 3;
-  }
-  public help() {
-    this.menuOption = 4;
-  }
   public settings() {
-    this.menuOption = 5;
+    this.menuOption = 3;
   }
 
   public StatEntry: string = '';

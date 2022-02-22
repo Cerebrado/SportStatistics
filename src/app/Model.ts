@@ -2,6 +2,11 @@ export class Model {
   History: Match[] = new Array<Match>();
   CurrentGame: Match;
   Settings: Settings = new Settings();
+  User: User;
+}
+
+export class User{
+  email: string;
 }
 
 export class Settings {
@@ -13,6 +18,7 @@ export class PlayEvent {
   public Short: string;
   public Long: string;
   public Value: number;
+
 
   constructor(short: string, long: string, value: number) {
     this.Short = short;
@@ -52,6 +58,7 @@ export class Match {
   public SetIndex: number;
   public ServiceIndex: number = 0;
   public Name: string;
+  public PlayEventsList: PlayEvent[];
 
   private _date: Date;
   get Date(): Date {
@@ -66,6 +73,7 @@ export class Match {
     this._date = new Date();
 
     this.Teams = [new Team(), new Team()];
+    this.PlayEventsList = new Array<PlayEvent>();
     this.SetIndex = 0;
   }
 
