@@ -27,11 +27,11 @@ export class GoogleSigninService {
 
   public SignOut() {
     this.auth2.signOut().then(() => {
-      this.subject.next(null;
+      this.subject.next(null);
     });
   }
 
-  public observable(): Observable {
+  public observable(): Observable<gapi.client.auth2.GoogleUser> {
     return this.subject.asObservable();
   }
 }
